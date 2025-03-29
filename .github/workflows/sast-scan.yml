@@ -27,6 +27,7 @@ jobs:
 
       - name: Run scan with ODC
         run: |
+          export JAVA_OPTS="-Dorg.slf4j.simpleLogger.defaultLogLevel=warn"
           dependency-check/bin/dependency-check.sh --project "bitcoin" --scan . > ODC-report
 
       - name: Archive production artifacts
@@ -35,4 +36,3 @@ jobs:
           name: sast report
           path: |
             ./ODC-report
-
